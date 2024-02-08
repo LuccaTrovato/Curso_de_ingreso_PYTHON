@@ -65,10 +65,35 @@ class App(customtkinter.CTk):
         alert("suma", suma)
         
     def btn_promedio_on_click(self):
-        pass
+        producto_1 = self.txt_importe_1.get()
+        producto_2 = self.txt_importe_2.get()
+        producto_3 = self.txt_importe_3.get()
+
+        producto1_final = int(producto_1)
+        producto2_final = int(producto_2)
+        producto3_final = int(producto_3)
+
+        promedio = producto1_final + producto2_final + producto3_final 
+        promedio_f = promedio / 3
+
+        alert("Promedio", promedio_f)
 
     def btn_total_iva_on_click(self):
-        pass      
+        producto_1 = self.txt_importe_1.get()
+        producto_2 = self.txt_importe_2.get()
+        producto_3 = self.txt_importe_3.get()
+
+        producto1_final = int(producto_1)
+        producto2_final = int(producto_2)
+        producto3_final = int(producto_3)
+
+        suma_3 = producto1_final + producto2_final + producto3_final
+
+        iva_total = suma_3 * 21 / 100
+
+        precio_final = suma_3 + iva_total
+
+        alert("Final con IVA", precio_final)     
     
 if __name__ == "__main__":
     app = App()
