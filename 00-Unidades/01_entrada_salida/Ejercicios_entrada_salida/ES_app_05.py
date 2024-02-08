@@ -42,16 +42,16 @@ class App(customtkinter.CTk):
     def btn_mostrar_on_click(self):
         nombre = self.txt_nombre.get()
         edad = self.txt_edad.get()
-
-        self.txt_nombre.insert(0, nombre)
-        self.txt_edad.insert(0, edad)
-        self.txt_edad.delete(0,"end")
-        self.txt_nombre.delete(0,"end")
         
+        #mensaje = "Usted se llama {0} y su edad es {1} años".format (nombre, edad)
 
-        alert ("Informacion" ,("usted se llama", nombre, "edad" ,edad, "años"))
+        mensaje = f"Usted se llama {nombre} y su edad es de {edad} años"
+
         
-    
+        alert("saludo", mensaje)
+
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
