@@ -78,7 +78,7 @@ class App(customtkinter.CTk):
         
         mensaje = round(mensaje)
 
-        alert("mensaje", f"El precio final es de ${mensaje}")
+        alert("mensaje", f"Comprando {cantidad} lamparitas bajo consumo marca {marca} el precio es de ${cantidad * precio} y con el descuento añadido el precio final es de ${mensaje}")
 
 if __name__ == "__main__":
     app = App()
