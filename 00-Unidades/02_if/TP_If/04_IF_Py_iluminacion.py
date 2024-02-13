@@ -5,17 +5,20 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Lucca
+apellido: Trovato
 ---
 TP: IF_Iluminacion
 ---
 Enunciado:
 Todas las lámparas están  al mismo precio de $800 pesos final.
 		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
-		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
-		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
-		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
+		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % 
+        y si es de otra marca el descuento es del 30%.
+		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % 
+        y si es de otra marca el descuento es del 20%.
+		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, 
+        si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
 		E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
 '''
 
@@ -43,9 +46,40 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        marca = self.combobox_marca.get()
+        cantidad = self.combobox_cantidad.get()
+        cantidad = int(cantidad)
+
+        precio = 800
+        precio = int(precio)
+
+        if cantidad >= 6 and cantidad <= 9:
+            mensaje = cantidad * precio * 0.5
+        elif cantidad == 5 and marca == "ArgentinaLuz":
+            mensaje = cantidad * precio - cantidad * precio * 0.4
+        elif cantidad == 5:
+            mensaje = cantidad * precio - cantidad * precio * 0.3
+        elif cantidad == 4 and marca == "ArgentinaLuz":
+            mensaje = cantidad * precio - cantidad * precio * 0.25
+        elif cantidad == 4 and marca == "FelipeLamparas":
+            mensaje = cantidad * precio - cantidad * precio * 0.25
+        elif cantidad == 4:
+            mensaje = cantidad * precio - cantidad * precio * 0.2
+        elif cantidad == 3 and marca == "ArgentinaLuz":
+            mensaje = cantidad * precio - cantidad * precio * 0.15
+        elif cantidad == 3 and marca == "FelipeLamparas":
+            mensaje = cantidad * precio - cantidad * precio * 0.1
+        elif cantidad == 3:
+            mensaje = cantidad * precio - cantidad * precio * 0.05
+        elif cantidad >= 10:
+            mensaje =  cantidad * precio * 0.45
+        else:
+            mensaje = cantidad * precio
         
-    
+        mensaje = round(mensaje)
+
+        alert("mensaje", f"El precio final es de ${mensaje}")
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
