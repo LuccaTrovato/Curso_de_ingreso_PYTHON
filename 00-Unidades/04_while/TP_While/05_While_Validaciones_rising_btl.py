@@ -54,12 +54,35 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        apellido = self.txt_apellido.get()
-        edad = self.txt_edad.get()
-        estado_civil = self.txt_tipo.get()
-        legajo = self.txt_legajo.get()
-
+        apellido = prompt("Apellido", "Ingrese su apellido")
         
+        edad = prompt("edad","Ingrese su edad")
+        edad = int(edad)
+
+        while edad < 18 or edad > 90:
+            edad = prompt ("edad", "La edad es incorrecta, reingresela")
+            edad = int(edad)
+        
+        estado_civil = prompt("Estado Civil", "Ingrese su estado civil")
+
+        while estado_civil != "Soltero" and estado_civil != "Soltera" and estado_civil != "Casado" and estado_civil != "Casada" and estado_civil != "Divorciado" and estado_civil != "Divorciada" and estado_civil != "Viudo" and estado_civil != "Viuda":
+            estado_civil = prompt ("estado civil", "El estado civil es incorrecto, reingreselo")
+        
+        legajo = prompt("Legajo", "ingrese su numero de legajo (de 4 cifras)")
+        legajo = int(legajo)
+
+        while legajo < 1000:
+            legajo = prompt("Legajo", "Numero incorrecto, Reingrese su numero de legajo")
+            legajo = int(legajo)
+
+        self.txt_apellido.delete(0, "end")
+        self.txt_apellido.insert(0, apellido )
+        self.txt_edad.delete(0, "end")
+        self.txt_edad.insert(0, edad)
+        self.txt_tipo.delete(0, "end")
+        self.txt_tipo.insert(0, estado_civil)
+        self.txt_legajo.delete(0, "end")
+        self.txt_legajo.insert(0, legajo)
 
 
 if __name__ == "__main__":
